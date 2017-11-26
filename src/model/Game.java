@@ -1,13 +1,23 @@
+package model;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class game {
+public class Game extends Observable{
 	
 	public int size ;
-	public board b;
+	public Board b;
 	
-	public game(int size) {
+	public Game(int size) {
 		this.size = size;
-		this.b = new board(size);
+		this.b = new Board(size);
+	}
+		
+	public void jouer()
+	{
+		System.out.println("Model : jouer");
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public void new_value_box() {
@@ -31,4 +41,7 @@ public class game {
 		b.getBoard().set(tampon.get(nbAlea), value);
 		
 	}
+
+
+	
 }

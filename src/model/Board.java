@@ -1,11 +1,12 @@
+package model;
 import java.util.ArrayList;
 
-public class board {
+public class Board {
 	
 	private ArrayList<Integer> board;
 	private int size;
 
-	public board(int size) {
+	public Board(int size) {
 		board  = new ArrayList<Integer>();
 		init_board(size);
 		this.size = size;
@@ -13,7 +14,7 @@ public class board {
 	
 	public void init_board(int size) {
 		for (int i = 0; i < size * size; i++) {
-			board.set(i, 0) ;
+			board.add(i, 0) ;
 		}
 	}
 		
