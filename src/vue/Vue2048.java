@@ -33,11 +33,14 @@ public class Vue2048 extends JPanel implements IVue{
 	{
 		Border blackline = BorderFactory.createLineBorder(Color.black,1);
 		
-		for(int i = 0; i<g.size*g.size;i++){
-		   Case maCase = new Case();
-		   
-		   this.ctrl.ajouterObserver(maCase);
-		   this.add(maCase);
+		for(int i = 0 ; i < g.size ; i++){
+			for(int j = 0 ; j < g.size; j++)
+			{
+				Case maCase = new Case(i,j);
+				maCase.setController(this.ctrl);
+				this.ctrl.ajouterObserver(maCase);
+				this.add(maCase);
+			}   
 		}
 		this.setBorder(blackline);
 	}

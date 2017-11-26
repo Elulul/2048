@@ -36,7 +36,11 @@ public class ControllerVue2048 implements KeyListener {
 		this.model = g;
 	}
 	
-
+	public Game getModel()
+	{
+		return this.model;
+	}
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
@@ -58,6 +62,7 @@ public class ControllerVue2048 implements KeyListener {
 			break;
 		
 		}
+		this.model.jouer();
 		
 	}
 
