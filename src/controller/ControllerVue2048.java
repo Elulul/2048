@@ -39,8 +39,25 @@ public class ControllerVue2048 implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("ControllerVue2048 : KeyPressed");
-		this.model.jouer();
+		switch (e.getKeyCode()) {
+		case 37 :
+			System.out.println("ControllerVue2048 : KeyPressed vers la gauche");
+			this.model.jouer();
+			break;
+		case 38 :
+			System.out.println("ControllerVue2048 : KeyPressed vers le haut");
+			this.model.jouer();
+			break;
+		case 39 :
+			System.out.println("ControllerVue2048 : KeyPressed vers la droite");
+			this.model.jouer();
+			break;
+		case 40 : 
+			System.out.println("ControllerVue2048 : KeyPressed vers le bas");
+			this.model.jouer();
+			break;
+		
+		}
 		
 	}
 

@@ -15,7 +15,7 @@ public class Fenetre extends JFrame implements IVue{
 	
 	public Fenetre() {
 		this.setTitle("2048");
-	    this.setSize(1280, 740);
+	    this.setSize(740, 740);
 	    
 	    //Model
 	    Game g = new Game(4);
