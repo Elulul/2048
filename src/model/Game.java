@@ -21,6 +21,7 @@ public class Game extends Observable{
 	}
 	
 	public void new_value_box() {
+		/*
 		ArrayList<Integer> tampon = new ArrayList<Integer>();
 		for (int i =0; i < size * size; i++) {
 			if(b.getBoard().get(i) == 0) {
@@ -39,6 +40,7 @@ public class Game extends Observable{
 			value = 2;
 		}
 		b.getBoard().set(tampon.get(nbAlea), value);
+		*/
 		
 	}
 

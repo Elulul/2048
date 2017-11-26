@@ -13,7 +13,7 @@ import javax.swing.border.Border;
 import model.Game;
 import controller.ControllerVue2048;
 
-public class Vue2048 extends JPanel implements Observer,IVue{
+public class Vue2048 extends JPanel implements IVue{
 
 	Game g;
 	private ControllerVue2048 ctrl;
@@ -21,13 +21,7 @@ public class Vue2048 extends JPanel implements Observer,IVue{
 	public Vue2048(Game g) {
 		super(new GridLayout (g.size,g.size));
 		this.g = g;
-		Border blackline = BorderFactory.createLineBorder(Color.black,1); 
-		for(int i = 0; i<g.size*g.size;i++){
-		   JPanel ptest = new JPanel();
-		   ptest.setBorder(blackline);
-		   this.add(ptest);
-		}
-		this.setBorder(blackline);
+		
 	}
 
 	public void setController(ControllerVue2048 ctrl)
@@ -35,9 +29,18 @@ public class Vue2048 extends JPanel implements Observer,IVue{
 		this.ctrl = ctrl;
 	}
 	
-	@Override
-	public void update(Observable o, Object arg) {
-		System.out.println("Vue : le model a change");
+	public void init()
+	{
+		Border blackline = BorderFactory.createLineBorder(Color.black,1);
+		
+		for(int i = 0; i<g.size*g.size;i++){
+		   Case maCase = new Case();
+		   
+		   this.ctrl.ajouterObserver(maCase);
+		   this.add(maCase);
+		}
+		this.setBorder(blackline);
 	}
+	
 
 }

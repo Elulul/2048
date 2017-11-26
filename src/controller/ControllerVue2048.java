@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Observer;
 
 import model.Game;
 import vue.IVue;
@@ -23,7 +24,11 @@ public class ControllerVue2048 implements KeyListener {
 	public void setVue(IVue vue)
 	{
 		this.vue = vue;
-		this.model.addObserver((Vue2048) vue);
+	}
+	
+	public void ajouterObserver(Observer o)
+	{
+		this.model.addObserver(o);
 	}
 	
 	public void setModel(Game g)

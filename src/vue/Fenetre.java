@@ -33,8 +33,11 @@ public class Fenetre extends JFrame implements IVue{
 	    
 	    //La vue a besoin d'un controller
 	    this.setController(ctrl);
+	    v.setController(ctrl);
 
 	   	this.addKeyListener(ctrl);   
+	   	
+	   	v.init();
 	    
 	    this.setContentPane(v);
 	    this.setVisible(true);
