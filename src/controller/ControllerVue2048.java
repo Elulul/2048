@@ -36,10 +36,13 @@ public class ControllerVue2048 implements KeyListener {
 		this.model = g;
 	}
 	
-
+	public Game getModel()
+	{
+		return this.model;
+	}
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("ControllerVue2048 : KeyPressed");
 		this.model.jouer();
 		
 	}
