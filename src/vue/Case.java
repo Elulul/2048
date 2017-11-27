@@ -48,8 +48,7 @@ public class Case extends JPanel implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		int valeur = this.ctrl.getModel().getBoard().getValeur(this.x, this.y);
-		if(valeur != 0)
-			this.value.setText(Integer.toString(valeur));
+		this.value.setText(valeur != 0 ? Integer.toString(valeur) : "");
 	}
 
 }

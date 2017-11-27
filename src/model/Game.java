@@ -13,8 +13,9 @@ public class Game extends Observable{
 		this.b = new Board(size);
 	}
 		
-	public void jouer()
+	public void jouer(int dir)
 	{
+		moveCase(dir);
 		if(this.new_value_box())
 		{
 			this.setChanged();
@@ -71,7 +72,155 @@ public class Game extends Observable{
 		}
 		
 	}
-
-
-	
+	public void moveCase(int dir)
+	{
+		int[][] Board = b.getBoard();
+		switch(dir)
+		{
+		case 0: //Gauche
+			moveLeft(Board);
+			break;
+		case 1: //Haut
+			moveUp(Board);
+			break;
+		case 2: //Droite
+			moveRight(Board);
+			break;
+		case 3: //Bas
+			moveDown(Board);
+			break;
+		}
+	}
+	public void moveLeft(int[][] Board)
+	{
+		for(int i=0;i<Board.length;i++)
+		{
+			int[] temp = new int[Board.length];
+			int cpt = 0;
+			for(int j=0;j<Board.length;j++)
+			{
+				if(Board[i][j] != 0)
+				{
+					temp[cpt++] = Board[i][j];
+				}
+			}
+			for(int k=0;k<temp.length-1;k++)
+			{
+				if(temp[k] == temp[k+1] && temp[k] != 0) 
+				{
+					temp[k] = temp[k]*2;
+					temp[k+1] = 0;
+					k++;
+				}
+			}
+			cpt = 0;
+			Board[i] = new int[Board.length];
+			for(int j=0;j<Board.length;j++)
+			{
+				if(temp[j] != 0)
+				{
+					Board[i][cpt++] = temp[j];
+				}
+			}
+		}
+	}
+	public void moveRight(int[][] Board)
+	{
+		for(int i=Board.length-1;i>=0;i--)
+		{
+			int[] temp = new int[Board.length];
+			int cpt = Board.length-1;
+			for(int j=Board.length-1;j>=0;j--)
+			{
+				if(Board[i][j] != 0)
+				{
+					temp[cpt--] = Board[i][j];
+				}
+			}
+			for(int k=temp.length-1;k>0;k--)
+			{
+				if(temp[k] == temp[k-1] && temp[k] != 0) 
+				{
+					temp[k] = temp[k]*2;
+					temp[k-1] = 0;
+					k--;
+				}
+			}
+			cpt = Board.length-1;
+			Board[i] = new int[Board.length];
+			for(int j=Board.length-1;j>=0;j--)
+			{
+				if(temp[j] != 0)
+				{
+					Board[i][cpt--] = temp[j];
+				}
+			}
+		}
+	}
+	public void moveUp(int[][] Board)
+	{
+		for(int i=0;i<Board.length;i++)
+		{
+			int[] temp = new int[Board.length];
+			int cpt = 0;
+			for(int j=0;j<Board.length;j++)
+			{
+				if(Board[j][i] != 0)
+				{
+					temp[cpt++] = Board[j][i];
+				}
+			}
+			for(int k=0;k<temp.length-1;k++)
+			{
+				if(temp[k] == temp[k+1] && temp[k] != 0) 
+				{
+					temp[k] = temp[k]*2;
+					temp[k+1] = 0;
+					k++;
+				}
+			}
+			cpt = 0;
+			for(int j=0;j<Board.length;j++)
+			{
+				Board[j][i] = 0;
+				if(temp[j] != 0)
+				{
+					Board[cpt++][i] = temp[j];
+				}
+			}
+		}
+	}
+	public void moveDown(int[][] Board)
+	{
+		for(int i=Board.length-1;i>=0;i--)
+		{
+			int[] temp = new int[Board.length];
+			int cpt = Board.length-1;
+			for(int j=Board.length-1;j>=0;j--)
+			{
+				if(Board[j][i] != 0)
+				{
+					temp[cpt--] = Board[j][i];
+				}
+			}
+			for(int k=temp.length-1;k>0;k--)
+			{
+				if(temp[k] == temp[k-1] && temp[k] != 0) 
+				{
+					temp[k] = temp[k]*2;
+					temp[k-1] = 0;
+					k--;
+				}
+			}
+			cpt = Board.length-1;
+			for(int j=Board.length-1;j>=0;j--)
+			{
+				Board[j][i] = 0;
+				if(temp[j] != 0)
+				{
+					Board[cpt--][i] = temp[j];
+				}
+			}
+		}
+	}
 }
